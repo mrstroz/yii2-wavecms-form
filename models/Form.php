@@ -9,6 +9,7 @@ use yii\behaviors\TimestampBehavior;
  * This is the model class for table "form".
  *
  * @property integer $id
+ * @property string $language
  * @property string $type
  * @property string $name
  * @property string $company
@@ -29,9 +30,8 @@ class Form extends \yii\db\ActiveRecord
         return 'form';
     }
 
-
     /**
-     * @return array
+     * @inheritdoc
      */
     public function behaviors()
     {
@@ -48,6 +48,7 @@ class Form extends \yii\db\ActiveRecord
         return [
             [['text'], 'string'],
             [['created_at', 'updated_at'], 'integer'],
+            [['language'], 'string', 'max' => 50],
             [['email'], 'required'],
             [['email'], 'email'],
             [['type', 'name', 'company', 'email', 'phone', 'subject'], 'string', 'max' => 255],
@@ -61,15 +62,16 @@ class Form extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('wavecms/form/main', 'ID'),
-            'type' => Yii::t('wavecms/form/main', 'Type'),
+            'language' => Yii::t('wavecms/base/main', 'Language'),
+            'type' => Yii::t('wavecms/base/main', 'Type'),
             'name' => Yii::t('wavecms/form/main', 'Name'),
             'company' => Yii::t('wavecms/form/main', 'Company'),
             'email' => Yii::t('wavecms/form/main', 'Email'),
             'phone' => Yii::t('wavecms/form/main', 'Phone'),
             'subject' => Yii::t('wavecms/form/main', 'Subject'),
             'text' => Yii::t('wavecms/form/main', 'Text'),
-            'created_at' => Yii::t('wavecms/form/main', 'Created At'),
-            'updated_at' => Yii::t('wavecms/form/main', 'Updated At'),
+            'created_at' => Yii::t('wavecms/base/main', 'Created At'),
+            'updated_at' => Yii::t('wavecms/base/main', 'Updated At'),
         ];
     }
 

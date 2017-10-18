@@ -9,7 +9,7 @@ return [
     'Phone' => 'Telefon',
     'Subject' => 'Temat',
     'Text' => 'Tekst',
-    'Created At' => 'Utworzono',
+
     'Separate by comma' => 'Oddziel przecinkami',
     'Thanks text' => 'Tekst podziękowania',
     'Send email' => 'Wyślij email',

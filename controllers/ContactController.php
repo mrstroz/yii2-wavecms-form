@@ -5,6 +5,7 @@ namespace mrstroz\wavecms\form\controllers;
 use mrstroz\wavecms\components\grid\ActionColumn;
 use mrstroz\wavecms\components\web\Controller;
 use mrstroz\wavecms\form\models\Form;
+use mrstroz\wavecms\form\models\FormSearch;
 use Yii;
 use yii\data\ActiveDataProvider;
 
@@ -28,6 +29,8 @@ class ContactController extends Controller
         ]);
 
         $this->dataProvider->sort->defaultOrder = ['created_at' => SORT_DESC];
+
+        $this->filterModel = new FormSearch();
 
         $this->columns = array(
             'created_at:datetime',

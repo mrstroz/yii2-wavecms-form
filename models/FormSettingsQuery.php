@@ -31,4 +31,13 @@ class FormSettingsQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+
+    public function getSettings($type)
+    {
+        return $this
+            ->joinWith('translations')
+            ->andFilterWhere(['and',
+                ['=', 'type', $type],
+            ]);
+    }
 }

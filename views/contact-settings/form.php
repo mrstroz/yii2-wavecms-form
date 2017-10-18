@@ -41,34 +41,24 @@ use yii\bootstrap\Html;
 </div>
 
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-9">
         <?php echo $form->field($model, 'subject'); ?>
         <?php echo $form->field($model, 'text')->widget(CKEditorWidget::className()) ?>
     </div>
-    <div class="col-md-2">
-        <b><?php echo Yii::t('wavecms/form/main', 'Tags'); ?>:</b><br/>
+    <div class="col-md-3">
+        <b><?php echo Yii::t('wavecms/form/main', 'Tags'); ?>:</b>
+        <hr />
         <table class="table table-bordered table-striped">
-            <tr>
-                <td>{created_at}</td>
-            </tr>
-            <tr>
-                <td>{name}</td>
-            </tr>
-            <tr>
-                <td>{company}</td>
-            </tr>
-            <tr>
-                <td>{email}</td>
-            </tr>
-            <tr>
-                <td>{phone}</td>
-            </tr>
-            <tr>
-                <td>{subject}</td>
-            </tr>
-            <tr>
-                <td>{text}</td>
-            </tr>
+            <?php
+            $formModelClass = Yii::$app->controller->module->models['Contact'];
+            $formModel = Yii::createObject($formModelClass);
+            ?>
+            <?php foreach ($formModel->attributes as $key => $attribute): ?>
+                <tr>
+                    <th><?php echo $formModel->getAttributeLabel($key); ?></th>
+                    <td>{<?php echo $key; ?>}</td>
+                </tr>
+            <?php endforeach; ?>
         </table>
     </div>
 </div>

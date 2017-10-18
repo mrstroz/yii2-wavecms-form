@@ -9,6 +9,7 @@ class m171017_184005_form_table extends Migration
 
         $this->createTable('form', [
             'id' => $this->primaryKey()->unsigned()->notNull(),
+            'language' => $this->string(50),
             'type' => $this->string(),
             'name' => $this->string(),
             'company' => $this->string(),
@@ -16,13 +17,18 @@ class m171017_184005_form_table extends Migration
             'phone' => $this->string(),
             'subject' => $this->string(),
             'text' => $this->text(),
-            'created_at' => $this->integer(),
-            'updated_at' => $this->integer()
+            'created_at' => $this->integer()
         ]);
 
         $this->createTable('form_settings', [
             'id' => $this->primaryKey()->unsigned()->notNull(),
-            'type' => $this->string(),
+            'type' => $this->string()
+        ]);
+
+        $this->createTable('form_settings_lang', [
+            'id' => $this->primaryKey()->unsigned()->notNull(),
+            'form_settings_id' => $this->integer(),
+            'language' => $this->string(50),
             'send_email' => $this->boolean(),
             'from_name' => $this->string(),
             'from_email' => $this->string(),
