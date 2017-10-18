@@ -21,7 +21,7 @@ class Bootstrap implements BootstrapInterface
                 ],
             ];
 
-            Yii::$app->params['nav'][] = [
+            Yii::$app->params['nav']['form'] = [
                 'label' => FontAwesome::icon('paper-plane-o') . Yii::t('wavecms/form/main', 'Forms'),
                 'url' => 'javascript: ;',
                 'options' => [
