@@ -72,6 +72,13 @@ class FormSettings extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('wavecms/form/main', 'ID'),
             'type' => Yii::t('wavecms/form/main', 'Type'),
+            'send_email' => Yii::t('wavecms/form/main', 'Send email'),
+            'from_name' => Yii::t('wavecms/form/main', 'From name'),
+            'from_email' => Yii::t('wavecms/form/main', 'From email'),
+            'recipient' => Yii::t('wavecms/form/main', 'Recipient'),
+            'subject' => Yii::t('wavecms/form/main', 'Subject'),
+            'text' => Yii::t('wavecms/form/main', 'Text'),
+            'thanks_text' => Yii::t('wavecms/form/main', 'Thanks text'),
         ];
     }
 

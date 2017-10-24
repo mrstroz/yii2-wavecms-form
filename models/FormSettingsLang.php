@@ -51,13 +51,13 @@ class FormSettingsLang extends \yii\db\ActiveRecord
             'id' => Yii::t('wavecms/form/main', 'ID'),
             'form_settings_id' => Yii::t('wavecms/form/main', 'Form Settings ID'),
             'language' => Yii::t('wavecms/form/main', 'Language'),
-            'send_email' => Yii::t('wavecms/form/main', 'Send Email'),
-            'from_name' => Yii::t('wavecms/form/main', 'From Name'),
-            'from_email' => Yii::t('wavecms/form/main', 'From Email'),
+            'send_email' => Yii::t('wavecms/form/main', 'Send email'),
+            'from_name' => Yii::t('wavecms/form/main', 'From name'),
+            'from_email' => Yii::t('wavecms/form/main', 'From email'),
             'recipient' => Yii::t('wavecms/form/main', 'Recipient'),
             'subject' => Yii::t('wavecms/form/main', 'Subject'),
             'text' => Yii::t('wavecms/form/main', 'Text'),
-            'thanks_text' => Yii::t('wavecms/form/main', 'Thanks Text'),
+            'thanks_text' => Yii::t('wavecms/form/main', 'Thanks text'),
         ];
     }
 
