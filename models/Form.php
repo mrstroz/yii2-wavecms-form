@@ -50,7 +50,7 @@ class Form extends \yii\db\ActiveRecord
     {
         return [
             [['text'], 'string'],
-            [['created_at', 'updated_at'], 'integer'],
+            [['created_at'], 'integer'],
             [['language'], 'string', 'max' => 50],
             [['email'], 'required'],
             [['email'], 'email'],
@@ -73,8 +73,7 @@ class Form extends \yii\db\ActiveRecord
             'phone' => Yii::t('wavecms/form/main', 'Phone'),
             'subject' => Yii::t('wavecms/form/main', 'Subject'),
             'text' => Yii::t('wavecms/form/main', 'Text'),
-            'created_at' => Yii::t('wavecms/base/main', 'Created At'),
-            'updated_at' => Yii::t('wavecms/base/main', 'Updated At'),
+            'created_at' => Yii::t('wavecms/base/main', 'Created At')
         ];
     }
 
