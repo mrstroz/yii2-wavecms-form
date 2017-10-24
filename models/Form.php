@@ -36,7 +36,10 @@ class Form extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            TimestampBehavior::className()
+            [
+                'class' => TimestampBehavior::className(),
+                'updatedAtAttribute' => false
+            ]
         ];
     }
 
