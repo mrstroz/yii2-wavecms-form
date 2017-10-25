@@ -79,14 +79,16 @@ public function actionIndex()
             $model->save();
 
             $formSettings = FormSettings::find()->getSettings('contact')->one();
-            $formSettings->replaceTags($model);
 
-            Yii::$app->mailer->compose()
-                ->setSubject($formSettings->subject)
-                ->setFrom([$formSettings->from_email => $formSettings->from_name])
-                ->setHtmlBody($formSettings->text)
-                ->setTo(explode(',', $formSettings->recipient))
-                ->send();
+            if ($formSettings->send_email) {
+                $formSettings->replaceTags($model);
+                Yii::$app->mailer->compose()
+                    ->setSubject($formSettings->subject)
+                    ->setFrom([$formSettings->from_email => $formSettings->from_name])
+                    ->setHtmlBody($formSettings->text)
+                    ->setTo(explode(',', $formSettings->recipient))
+                    ->send();
+            }
         }
 
         return $this->render('index', [
