@@ -2,21 +2,21 @@
 
 namespace mrstroz\wavecms\form;
 
+/**
+ * Class Module
+ * @package mrstroz\wavecms\form
+ * This is the main module class of the yii2-wavecms-form.
+ */
+
 class Module extends \yii\base\Module
 {
-    public $models = [];
-    public $forms = [];
+    /**
+     * @var array Class mapping
+     */
+    public $classMap = [];
 
     public function init()
     {
-        if (!isset($this->models['Contact'])) {
-            $this->models['Contact'] = 'mrstroz\wavecms\form\models\Form';
-        }
-
-        if (!isset($this->models['ContactSettings'])) {
-            $this->models['ContactSettings'] = 'mrstroz\wavecms\form\models\FormSettings';
-        }
-
         $this->controllerNamespace = 'mrstroz\wavecms\form\controllers';
 
         parent::init();

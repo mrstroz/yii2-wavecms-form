@@ -2,6 +2,7 @@
 
 namespace mrstroz\wavecms\form\models;
 
+use mrstroz\wavecms\form\models\query\FormQuery;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 
@@ -64,16 +65,16 @@ class Form extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('wavecms/form/main', 'ID'),
-            'language' => Yii::t('wavecms/base/main', 'Language'),
-            'type' => Yii::t('wavecms/base/main', 'Type'),
-            'name' => Yii::t('wavecms/form/main', 'Name'),
-            'company' => Yii::t('wavecms/form/main', 'Company'),
-            'email' => Yii::t('wavecms/form/main', 'Email'),
-            'phone' => Yii::t('wavecms/form/main', 'Phone'),
-            'subject' => Yii::t('wavecms/form/main', 'Subject'),
-            'text' => Yii::t('wavecms/form/main', 'Text'),
-            'created_at' => Yii::t('wavecms/base/main', 'Created At')
+            'id' => Yii::t('wavecms_form/main', 'ID'),
+            'language' => Yii::t('wavecms_form/main', 'Language'),
+            'type' => Yii::t('wavecms_form/main', 'Type'),
+            'name' => Yii::t('wavecms_form/main', 'Name'),
+            'company' => Yii::t('wavecms_form/main', 'Company'),
+            'email' => Yii::t('wavecms_form/main', 'Email'),
+            'phone' => Yii::t('wavecms_form/main', 'Phone'),
+            'subject' => Yii::t('wavecms_form/main', 'Subject'),
+            'text' => Yii::t('wavecms_form/main', 'Text'),
+            'created_at' => Yii::t('wavecms_form/main', 'Created At')
         ];
     }
 

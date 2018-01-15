@@ -2,6 +2,7 @@
 
 namespace mrstroz\wavecms\form\models;
 
+use mrstroz\wavecms\form\models\query\FormSettingsLangQuery;
 use Yii;
 
 /**
@@ -48,16 +49,16 @@ class FormSettingsLang extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('wavecms/form/main', 'ID'),
-            'form_settings_id' => Yii::t('wavecms/form/main', 'Form Settings ID'),
-            'language' => Yii::t('wavecms/form/main', 'Language'),
-            'send_email' => Yii::t('wavecms/form/main', 'Send email'),
-            'from_name' => Yii::t('wavecms/form/main', 'From name'),
-            'from_email' => Yii::t('wavecms/form/main', 'From email'),
-            'recipient' => Yii::t('wavecms/form/main', 'Recipient'),
-            'subject' => Yii::t('wavecms/form/main', 'Subject'),
-            'text' => Yii::t('wavecms/form/main', 'Text'),
-            'thanks_text' => Yii::t('wavecms/form/main', 'Thanks text'),
+            'id' => Yii::t('wavecms_form/main', 'ID'),
+            'form_settings_id' => Yii::t('wavecms_form/main', 'Form Settings ID'),
+            'language' => Yii::t('wavecms_form/main', 'Language'),
+            'send_email' => Yii::t('wavecms_form/main', 'Send email'),
+            'from_name' => Yii::t('wavecms_form/main', 'From name'),
+            'from_email' => Yii::t('wavecms_form/main', 'From email'),
+            'recipient' => Yii::t('wavecms_form/main', 'Recipient'),
+            'subject' => Yii::t('wavecms_form/main', 'Subject'),
+            'text' => Yii::t('wavecms_form/main', 'Text'),
+            'thanks_text' => Yii::t('wavecms_form/main', 'Thanks text'),
         ];
     }
 

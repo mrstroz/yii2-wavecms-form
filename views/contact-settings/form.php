@@ -6,6 +6,7 @@ use mrstroz\wavecms\components\helpers\WavecmsForm;
 use mrstroz\wavecms\components\widgets\CKEditorWidget;
 use mrstroz\wavecms\components\widgets\TabsWidget;
 use mrstroz\wavecms\components\widgets\TabWidget;
+use mrstroz\wavecms\form\models\Form;
 use yii\bootstrap\Html;
 
 ?>
@@ -15,7 +16,7 @@ use yii\bootstrap\Html;
 
 <?php echo Html::activeHiddenInput($model, 'type', ['value' => 'contact']); ?>
 
-<?php TabWidget::begin(['heading' => Yii::t('wavecms/base/main', 'General')]); ?>
+<?php TabWidget::begin(['heading' => Yii::t('wavecms_form/main', 'General')]); ?>
 
 <?php echo $form->field($model, 'send_email')->widget(SwitchBox::className(), [
     'options' => [
@@ -36,7 +37,7 @@ use yii\bootstrap\Html;
 </div>
 <div class="row">
     <div class="col-md-12">
-        <?php echo $form->field($model, 'recipient')->hint(Yii::t('wavecms/form/main', 'Separate by comma')); ?>
+        <?php echo $form->field($model, 'recipient')->hint(Yii::t('wavecms_form/main', 'Separate by comma')); ?>
     </div>
 </div>
 
@@ -46,12 +47,11 @@ use yii\bootstrap\Html;
         <?php echo $form->field($model, 'text')->widget(CKEditorWidget::className()) ?>
     </div>
     <div class="col-md-3">
-        <b><?php echo Yii::t('wavecms/form/main', 'Tags'); ?>:</b>
+        <b><?php echo Yii::t('wavecms_form/main', 'Tags'); ?>:</b>
         <hr />
         <table class="table table-bordered table-striped">
             <?php
-            $formModelClass = Yii::$app->controller->module->models['Contact'];
-            $formModel = Yii::createObject($formModelClass);
+            $formModel = Yii::createObject(Form::className());
             ?>
             <?php foreach ($formModel->attributes as $key => $attribute): ?>
                 <tr>
@@ -65,7 +65,7 @@ use yii\bootstrap\Html;
 
 <?php TabWidget::end(); ?>
 
-<?php TabWidget::begin(['heading' => Yii::t('wavecms/form/main', 'Thanks text')]); ?>
+<?php TabWidget::begin(['heading' => Yii::t('wavecms_form/main', 'Thanks text')]); ?>
 
 <?php echo $form->field($model, 'thanks_text')->widget(CKEditorWidget::className()) ?>
 

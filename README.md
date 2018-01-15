@@ -28,25 +28,16 @@ Required
 
 1. Update `backend/config/main.php` (Yii2 advanced template) 
 ```php
-'bootstrap' => [
-    // ...
-    'mrstroz\wavecms\form\Bootstrap'
-],
 'modules' => [
     // ...
-    'form' => [
+    'wavecms-form' => [
         'class' => 'mrstroz\wavecms\form\Module',
         /*
-         * Overwrite model classes and form views
-         'models' => [
-            'Contact' => 'mrstroz\wavecms\form\models\Form',
-            'ContactSettings' => 'mrstroz\wavecms\form\models\FormSettings'
-         ],
-         'forms' => [
-            'form/contact' => '@backend/views/form/contact/form.php'
-            'form/contact-settings' => '@backend/views/form/contact-settings/form.php'
-         ]
-         */
+        * Override classes
+        'classMap' => [
+            'Form' => 'common\models\Form',
+        ]
+        */
     ],
 ],
 
@@ -54,8 +45,23 @@ Required
 
 Form views can be overwritten by backend [themes](http://www.yiiframework.com/doc-2.0/guide-output-theming.html);
 
-2. Run migration 
+2. Add the `migrationPath` in `console/config/main.php` and run `yii migrate`:
+
+```php
+// Add migrationPaths to console config:
+'controllerMap' => [
+    'migrate' => [
+        'class' => 'yii\console\controllers\MigrateController',
+        'migrationPath' => [
+            '@vendor/mrstroz/yii2-wavecms-form/migrations'
+        ],
+    ],
+],
 ```
+
+Or run migrates directly
+
+```yii
 yii migrate/up --migrationPath=@vendor/mrstroz/yii2-wavecms-form/migrations
 ```
 

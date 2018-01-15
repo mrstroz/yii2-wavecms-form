@@ -1,7 +1,8 @@
 <?php
 
-namespace mrstroz\wavecms\form\models;
+namespace mrstroz\wavecms\form\models\search;
 
+use mrstroz\wavecms\form\models\Form;
 use Yii;
 use yii\data\ActiveDataProvider;
 

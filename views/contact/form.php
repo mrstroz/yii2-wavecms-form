@@ -14,7 +14,7 @@ use yii\bootstrap\Html;
 
 <?php echo Html::activeHiddenInput($model, 'type', ['value' => 'contact']); ?>
 
-<?php TabWidget::begin(['heading' => Yii::t('wavecms/base/main', 'General')]); ?>
+<?php TabWidget::begin(['heading' => Yii::t('wavecms_form/main', 'General')]); ?>
 
 <div class="row">
     <div class="col-md-6">

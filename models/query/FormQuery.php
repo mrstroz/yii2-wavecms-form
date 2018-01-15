@@ -1,6 +1,6 @@
 <?php
 
-namespace mrstroz\wavecms\form\models;
+namespace mrstroz\wavecms\form\models\query;
 
 /**
  * This is the ActiveQuery class for [[Form]].

@@ -5,7 +5,7 @@ namespace mrstroz\wavecms\form\controllers;
 use mrstroz\wavecms\components\grid\ActionColumn;
 use mrstroz\wavecms\components\web\Controller;
 use mrstroz\wavecms\form\models\Form;
-use mrstroz\wavecms\form\models\FormSearch;
+use mrstroz\wavecms\form\models\search\FormSearch;
 use Yii;
 use yii\data\ActiveDataProvider;
 
@@ -14,14 +14,10 @@ class ContactController extends Controller
 
     public function init()
     {
-        if (isset($this->module->forms['form/contact'])) {
-            $this->viewForm = $this->module->forms['form/contact'];
-        }
-
         /** @var Form $model */
-        $model = Yii::createObject($this->module->models['Contact']);
+        $model = Yii::createObject(Form::className());
 
-        $this->heading = Yii::t('wavecms/form/main', 'Contact form');
+        $this->heading = Yii::t('wavecms_form/main', 'Contact form');
         $this->query = $model::find()->andWhere(['type' => 'contact']);
 
         $this->dataProvider = new ActiveDataProvider([
@@ -30,7 +26,7 @@ class ContactController extends Controller
 
         $this->dataProvider->sort->defaultOrder = ['created_at' => SORT_DESC];
 
-        $this->filterModel = new FormSearch();
+        $this->filterModel = Yii::createObject(FormSearch::className());
 
         $this->columns = array(
             'created_at:datetime',
