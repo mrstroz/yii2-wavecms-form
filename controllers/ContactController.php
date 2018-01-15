@@ -3,6 +3,7 @@
 namespace mrstroz\wavecms\form\controllers;
 
 use mrstroz\wavecms\components\grid\ActionColumn;
+use mrstroz\wavecms\components\grid\CheckboxColumn;
 use mrstroz\wavecms\components\web\Controller;
 use mrstroz\wavecms\form\models\Form;
 use mrstroz\wavecms\form\models\search\FormSearch;
@@ -29,6 +30,10 @@ class ContactController extends Controller
         $this->filterModel = Yii::createObject(FormSearch::className());
 
         $this->columns = array(
+            [
+                'class' => CheckboxColumn::className(),
+
+            ],
             'created_at:datetime',
             'name',
             'email',
