@@ -22,8 +22,14 @@ class Bootstrap implements BootstrapInterface
 
         Yii::setAlias('@wavecms_form', '@vendor/mrstroz/yii2-wavecms-form');
 
-        $this->initTranslations();
+        /** Set backend language based on user lang (Must be done before define translations */
+        if ($app->id === 'app-backend') {
+            if (!Yii::$app->user->isGuest) {
+                Yii::$app->language = Yii::$app->user->identity->lang;
+            }
+        }
 
+        $this->initTranslations();
 
         /** @var Module $module */
         if ($app->hasModule('wavecms') && ($module = $app->getModule('wavecms-form')) instanceof Module) {
