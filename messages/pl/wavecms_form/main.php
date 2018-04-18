@@ -17,17 +17,18 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Admin email' => 'Email administrator',
+    'Email' => '',
+    'ID' => '',
     'Company' => 'Firma',
     'Contact form' => 'Formularz kontaktowy',
     'Contact form - Settings' => 'Formularz kontaktowy - Ustawienia',
     'Created At' => 'Data utworzenia',
-    'Email' => '',
     'Form Settings ID' => 'ID Ustawienia formularza',
     'Forms' => 'Formularze',
     'From email' => 'Od email',
     'From name' => 'Od nazwa',
     'General' => 'Główne',
-    'ID' => '',
     'Language' => 'Język',
     'Name' => 'Nazwa',
     'Phone' => 'Telefon',
@@ -39,4 +40,5 @@ return [
     'Text' => 'Tekst',
     'Thanks text' => 'Tekst podziękowania',
     'Type' => 'Typ',
+    'User email' => 'Email użytkownik',
 ];

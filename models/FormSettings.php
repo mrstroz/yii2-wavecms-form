@@ -19,6 +19,11 @@ use yii\db\ActiveQuery;
  * @property string $subject
  * @property string $text
  * @property string $thanks_text
+ * @property integer $user_send_email
+ * @property string $user_from_name
+ * @property string $user_from_email
+ * @property string $user_subject
+ * @property string $user_text
  */
 class FormSettings extends \yii\db\ActiveRecord
 {
@@ -45,7 +50,8 @@ class FormSettings extends \yii\db\ActiveRecord
             'translate' => [
                 'class' => TranslateBehavior::className(),
                 'translationAttributes' => [
-                    'send_email', 'from_name', 'from_email', 'recipient', 'subject', 'text', 'thanks_text'
+                    'send_email', 'from_name', 'from_email', 'recipient', 'subject', 'text', 'thanks_text',
+                    'user_send_email', 'user_from_name', 'user_from_email', 'user_subject', 'user_text'
                 ]
             ],
         ];
@@ -58,10 +64,11 @@ class FormSettings extends \yii\db\ActiveRecord
     {
         return [
             [['type'], 'string', 'max' => 255],
-            [['send_email'], 'integer'],
-            [['text', 'thanks_text'], 'string'],
+            [['send_email', 'user_send_email'], 'integer'],
+            [['text', 'user_text', 'thanks_text'], 'string'],
             [['from_email'], 'email'],
             [['from_name', 'from_email', 'recipient', 'subject'], 'string', 'max' => 255],
+            [['user_from_name', 'user_from_email', 'user_subject'], 'string', 'max' => 255],
         ];
     }
 
@@ -80,6 +87,11 @@ class FormSettings extends \yii\db\ActiveRecord
             'subject' => Yii::t('wavecms_form/main', 'Subject'),
             'text' => Yii::t('wavecms_form/main', 'Text'),
             'thanks_text' => Yii::t('wavecms_form/main', 'Thanks text'),
+            'user_send_email' => Yii::t('wavecms_form/main', 'Send email'),
+            'user_from_name' => Yii::t('wavecms_form/main', 'From name'),
+            'user_from_email' => Yii::t('wavecms_form/main', 'From email'),
+            'user_subject' => Yii::t('wavecms_form/main', 'Subject'),
+            'user_text' => Yii::t('wavecms_form/main', 'Text'),
         ];
     }
 
@@ -118,7 +130,9 @@ class FormSettings extends \yii\db\ActiveRecord
                 }
 
                 $this->subject = str_replace('{' . $key . '}', $val, $this->subject);
+                $this->user_subject = str_replace('{' . $key . '}', $val, $this->user_subject);
                 $this->text = str_replace('{' . $key . '}', $val, $this->text);
+                $this->user_text = str_replace('{' . $key . '}', $val, $this->user_text);
             }
         }
 

@@ -18,6 +18,11 @@ use Yii;
  * @property string $subject
  * @property string $text
  * @property string $thanks_text
+ * @property integer $user_send_email
+ * @property string $user_from_name
+ * @property string $user_from_email
+ * @property string $user_subject
+ * @property string $user_text
  */
 class FormSettingsLang extends \yii\db\ActiveRecord
 {
@@ -35,11 +40,12 @@ class FormSettingsLang extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['send_email'], 'integer'],
+            [['send_email', 'user_send_email'], 'integer'],
             [['form_settings_id'], 'safe'],
-            [['text', 'thanks_text'], 'string'],
+            [['text', 'user_text', 'thanks_text'], 'string'],
             [['language'], 'string', 'max' => 50],
             [['from_name', 'from_email', 'recipient', 'subject'], 'string', 'max' => 255],
+            [['user_from_name', 'user_from_email', 'user_subject'], 'string', 'max' => 255],
         ];
     }
 
@@ -59,6 +65,11 @@ class FormSettingsLang extends \yii\db\ActiveRecord
             'subject' => Yii::t('wavecms_form/main', 'Subject'),
             'text' => Yii::t('wavecms_form/main', 'Text'),
             'thanks_text' => Yii::t('wavecms_form/main', 'Thanks text'),
+            'user_send_email' => Yii::t('wavecms_form/main', 'Send email'),
+            'user_from_name' => Yii::t('wavecms_form/main', 'From name'),
+            'user_from_email' => Yii::t('wavecms_form/main', 'From email'),
+            'user_subject' => Yii::t('wavecms_form/main', 'Subject'),
+            'user_text' => Yii::t('wavecms_form/main', 'Text'),
         ];
     }
 

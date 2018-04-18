@@ -2,6 +2,8 @@
 
 namespace mrstroz\wavecms\form\models\query;
 
+use mrstroz\wavecms\form\models\FormSettings;
+
 /**
  * This is the ActiveQuery class for [[FormSettings]].
  *
