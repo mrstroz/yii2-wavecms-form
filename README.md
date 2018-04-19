@@ -86,6 +86,7 @@ public function actionIndex()
 
             $formSettings = FormSettings::find()->getSettings('contact')->one();
             $formSettings->replaceTags($model);
+            $formSettings->replaceExtraTag('tag', 'value');
 
             if ($formSettings->send_email) {
                 Yii::$app->mailer->compose()

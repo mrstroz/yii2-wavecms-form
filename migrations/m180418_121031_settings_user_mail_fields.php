@@ -16,7 +16,7 @@ class m180418_121031_settings_user_mail_fields extends Migration
         $this->addColumn('form_settings_lang','user_from_name',$this->string());
         $this->addColumn('form_settings_lang','user_from_email',$this->string());
         $this->addColumn('form_settings_lang','user_subject',$this->string());
-        $this->addColumn('form_settings_lang','user_text',$this->string());
+        $this->addColumn('form_settings_lang','user_text',$this->text());
 
     }
 
