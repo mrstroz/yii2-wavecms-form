@@ -15,7 +15,7 @@ class ContactSettingsController extends Controller
         $this->type = 'page';
 
         /** @var Page $modelPage */
-        $modelPage = Yii::createObject(FormSettings::className());
+        $modelPage = Yii::createObject(FormSettings::class);
 
         $this->heading = Yii::t('wavecms_form/main', 'Contact form - Settings');
         $this->query = $modelPage::find()->andWhere(['type' => 'contact']);

@@ -48,7 +48,7 @@ class FormSettings extends \yii\db\ActiveRecord
     {
         return [
             'translate' => [
-                'class' => TranslateBehavior::className(),
+                'class' => TranslateBehavior::class,
                 'translationAttributes' => [
                     'send_email', 'from_name', 'from_email', 'recipient', 'subject', 'text', 'thanks_text',
                     'user_send_email', 'user_from_name', 'user_from_email', 'user_subject', 'user_text'
@@ -110,12 +110,13 @@ class FormSettings extends \yii\db\ActiveRecord
      */
     public function getTranslations()
     {
-        return $this->hasMany(FormSettingsLang::className(), ['form_settings_id' => 'id']);
+        return $this->hasMany(FormSettingsLang::class, ['form_settings_id' => 'id']);
     }
 
     /**
      * Replace tags by values in text and subject field
      * @param Form $model
+     * @throws \yii\base\InvalidArgumentException
      * @throws \yii\base\InvalidConfigException
      * @throws \yii\base\InvalidParamException
      */
@@ -135,7 +136,19 @@ class FormSettings extends \yii\db\ActiveRecord
                 $this->user_text = str_replace('{' . $key . '}', $val, $this->user_text);
             }
         }
+    }
 
+    /**
+     * Replace additional tags in email subject and text
+     * @param $tag
+     * @param $value
+     */
+    public function replaceExtraTag($tag, $value)
+    {
+        $this->subject = str_replace('{' . $tag . '}', $value, $this->subject);
+        $this->user_subject = str_replace('{' . $tag . '}', $value, $this->user_subject);
+        $this->text = str_replace('{' . $tag . '}', $value, $this->text);
+        $this->user_text = str_replace('{' . $tag . '}', $value, $this->user_text);
     }
 
 }

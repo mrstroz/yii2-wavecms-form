@@ -16,7 +16,7 @@ class ContactController extends Controller
     public function init()
     {
         /** @var Form $model */
-        $model = Yii::createObject(Form::className());
+        $model = Yii::createObject(Form::class);
 
         $this->heading = Yii::t('wavecms_form/main', 'Contact form');
         $this->query = $model::find()->andWhere(['type' => 'contact']);
@@ -27,18 +27,18 @@ class ContactController extends Controller
 
         $this->dataProvider->sort->defaultOrder = ['created_at' => SORT_DESC];
 
-        $this->filterModel = Yii::createObject(FormSearch::className());
+        $this->filterModel = Yii::createObject(FormSearch::class);
 
         $this->columns = array(
             [
-                'class' => CheckboxColumn::className(),
+                'class' => CheckboxColumn::class,
 
             ],
             'created_at:datetime',
             'name',
             'email',
             [
-                'class' => ActionColumn::className(),
+                'class' => ActionColumn::class,
             ],
         );
 
