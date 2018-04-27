@@ -123,7 +123,7 @@ class Bootstrap implements BootstrapInterface
     protected function initNavigation()
     {
         Yii::$app->params['nav']['wavecms_form'] = [
-            'label' => FontAwesome::icon('paper-plane-o') . Yii::t('wavecms_form/main', 'Forms'),
+            'label' => FontAwesome::icon('paper-plane') . Yii::t('wavecms_form/main', 'Forms'),
             'url' => 'javascript: ;',
             'options' => [
                 'class' => 'drop-down'
