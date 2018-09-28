@@ -11,13 +11,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Run
 
 ```
-composer require --prefer-source "mrstroz/yii2-wavecms-form" "~0.1.0"
+composer require --prefer-source "mrstroz/yii2-wavecms-form" "~0.2.1"
 ```
 
 or add
 
 ```
-"mrstroz/yii2-wavecms-form": "~0.1.0"
+"mrstroz/yii2-wavecms-form": "~0.2.1"
 ```
 
 to the require section of your `composer.json` file.
@@ -65,6 +65,20 @@ Or run migrates directly
 yii migrate/up --migrationPath=@vendor/mrstroz/yii2-wavecms-form/migrations
 ```
 
+3. Add `reCaptcha` component to `common/config/main-local.php`
+
+```php
+'components' => [
+    'reCaptcha' => [
+        'name' => 'reCaptcha',
+        'class' => 'himiklab\yii2\recaptcha\ReCaptcha',
+        'siteKey' => 'your siteKey',
+        'secret' => 'your secret key',
+    ],
+    // ...    
+]
+```
+
 Usage in frontend
 -----------------
 
@@ -79,6 +93,7 @@ use mrstroz\wavecms\form\models\FormSettings;
 public function actionIndex()
     {
         $model = new Form();
+        $model->scenario = Form::SCENARIO_WEB;
         $formSettings = false;
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -118,32 +133,39 @@ public function actionIndex()
 ```php
 <?php
 // ...
+use himiklab\yii2\recaptcha\ReCaptcha;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm;
 use yii\widgets\Pjax;
+
 // ...
-Pjax::begin();
-/** @var \mrstroz\wavecms\form\models\FormSettings $formSettings */
-if ($formSettings) {
-    echo $formSettings->thanks_text;
-} else {
-    $form = ActiveForm::begin(['options' => ['data-pjax' => true]]);
-
-    echo Html::activeHiddenInput($model, 'language', ['value' => Yii::$app->language]);
-    echo Html::activeHiddenInput($model, 'type', ['value' => 'contact']);
-
-    echo $form->field($model, 'name');
-    echo $form->field($model, 'company');
-    echo $form->field($model, 'email');
-    echo $form->field($model, 'phone');
-    echo $form->field($model, 'subject');
-    echo $form->field($model, 'text')->textarea();
-
-    echo Html::submitButton();
-
-    ActiveForm::end();
-}
-Pjax::end();
+    Pjax::begin();
+    /** @var \mrstroz\wavecms\form\models\FormSettings $formSettings */
+    if ($formSettings) {
+        echo $formSettings->thanks_text;
+    } else {
+        $form = ActiveForm::begin(['options' => ['data-pjax' => true]]);
+    
+        echo Html::activeHiddenInput($model, 'language', ['value' => Yii::$app->language]);
+        echo Html::activeHiddenInput($model, 'type', ['value' => 'contact']);
+    
+        echo $form->field($model, 'name');
+        echo $form->field($model, 'company');
+        echo $form->field($model, 'email');
+        echo $form->field($model, 'phone');
+        echo $form->field($model, 'subject');
+        echo $form->field($model, 'text')->textarea();
+        echo $form->field($model, 'agree_1')->checkbox();
+        echo $form->field($model, 'agree_2')->checkbox();
+    
+        echo $form->field($model, 'reCaptcha')->label(false)->widget(ReCaptcha::class);
+    
+    
+        echo Html::submitButton('Send message', ['class' => 'btn btn-primary']);
+    
+        ActiveForm::end();
+    }
+    Pjax::end();
 // ...
 
 ```

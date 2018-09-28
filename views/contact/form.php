@@ -40,6 +40,9 @@ use yii\bootstrap\Html;
         <?php echo $form->field($model, 'text')->textarea([
             'rows' => 6
         ]); ?>
+
+        <?php echo $form->field($model, 'agree_1')->checkbox(); ?>
+        <?php echo $form->field($model, 'agree_2')->checkbox(); ?>
     </div>
 </div>
 

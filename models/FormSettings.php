@@ -3,6 +3,7 @@
 namespace mrstroz\wavecms\form\models;
 
 use mrstroz\wavecms\components\behaviors\TranslateBehavior;
+use mrstroz\wavecms\components\widgets\EmailDetailView;
 use mrstroz\wavecms\form\models\query\FormSettingsQuery;
 use Yii;
 use yii\db\ActiveQuery;
@@ -119,6 +120,7 @@ class FormSettings extends \yii\db\ActiveRecord
      * @throws \yii\base\InvalidArgumentException
      * @throws \yii\base\InvalidConfigException
      * @throws \yii\base\InvalidParamException
+     * @throws \Exception
      */
     public function replaceTags($model)
     {
@@ -136,6 +138,15 @@ class FormSettings extends \yii\db\ActiveRecord
                 $this->user_text = str_replace('{' . $key . '}', $val, $this->user_text);
             }
         }
+
+        $table = EmailDetailView::widget([
+            'model' => $model,
+            'attributes' => $model::$emailAttributes
+        ]);
+
+        $this->text = str_replace('{table}', $table, $this->text);
+        $this->user_text = str_replace('{table}', $table, $this->user_text);
+
     }
 
     /**

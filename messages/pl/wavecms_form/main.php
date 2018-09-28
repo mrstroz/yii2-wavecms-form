@@ -17,9 +17,13 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Admin email' => 'Email administrator',
     'Email' => '',
     'ID' => '',
+    'Table' => 'Tabela',
+    'Admin email' => 'Email administrator',
+    'Agree - Marketing' => 'Zgoda - Marketing',
+    'Agree - Terms and conditions' => 'Zgoda - Regulamin',
+    'Check reCaptcha field' => 'Zaznacz pole reCaptcha',
     'Company' => 'Firma',
     'Contact form' => 'Formularz kontaktowy',
     'Contact form - Settings' => 'Formularz kontaktowy - Ustawienia',
@@ -32,6 +36,7 @@ return [
     'Language' => 'Język',
     'Name' => 'Nazwa',
     'Phone' => 'Telefon',
+    'Please accept terms and conditions' => 'Proszę zaakceptować regulamin',
     'Recipient' => 'Odbiorca',
     'Send email' => 'Wyślij email',
     'Separate by comma' => 'Oddziel przecinkami',
@@ -41,4 +46,5 @@ return [
     'Thanks text' => 'Tekst podziękowania',
     'Type' => 'Typ',
     'User email' => 'Email użytkownik',
+    'reCaptcha' => 'reCaptcha',
 ];

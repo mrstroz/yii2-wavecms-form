@@ -14,11 +14,11 @@ use yii\bootstrap\Html;
 <?php $form = WavecmsForm::begin(); ?>
 <?php TabsWidget::begin(); ?>
 
-<?php echo Html::activeHiddenInput($model, 'type', ['value' => 'contact']); ?>
+<?= Html::activeHiddenInput($model, 'type', ['value' => 'contact']); ?>
 
 <?php TabWidget::begin(['heading' => Yii::t('wavecms_form/main', 'Admin email')]); ?>
 
-<?php echo $form->field($model, 'send_email')->widget(SwitchBox::class, [
+<?= $form->field($model, 'send_email')->widget(SwitchBox::class, [
     'options' => [
         'label' => false
     ],
@@ -29,34 +29,38 @@ use yii\bootstrap\Html;
 
 <div class="row">
     <div class="col-md-6">
-        <?php echo $form->field($model, 'from_email'); ?>
+        <?= $form->field($model, 'from_email'); ?>
     </div>
     <div class="col-md-6">
-        <?php echo $form->field($model, 'from_name'); ?>
+        <?= $form->field($model, 'from_name'); ?>
     </div>
 </div>
 <div class="row">
     <div class="col-md-12">
-        <?php echo $form->field($model, 'recipient')->hint(Yii::t('wavecms_form/main', 'Separate by comma')); ?>
+        <?= $form->field($model, 'recipient')->hint(Yii::t('wavecms_form/main', 'Separate by comma')); ?>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-9">
-        <?php echo $form->field($model, 'subject'); ?>
-        <?php echo $form->field($model, 'text')->widget(CKEditorWidget::class) ?>
+        <?= $form->field($model, 'subject'); ?>
+        <?= $form->field($model, 'text')->widget(CKEditorWidget::class) ?>
     </div>
     <div class="col-md-3">
-        <b><?php echo Yii::t('wavecms_form/main', 'Tags'); ?>:</b>
+        <b><?= Yii::t('wavecms_form/main', 'Tags'); ?>:</b>
         <hr />
         <table class="table table-bordered table-striped">
+            <tr>
+                <th><?= Yii::t('wavecms_form/main', 'Table'); ?></th>
+                <td>{table}</td>
+            </tr>
             <?php
             $formModel = Yii::createObject(Form::class);
             ?>
             <?php foreach ($formModel->attributes as $key => $attribute): ?>
                 <tr>
-                    <th><?php echo $formModel->getAttributeLabel($key); ?></th>
-                    <td>{<?php echo $key; ?>}</td>
+                    <th><?= $formModel->getAttributeLabel($key); ?></th>
+                    <td>{<?= $key; ?>}</td>
                 </tr>
             <?php endforeach; ?>
         </table>
@@ -67,7 +71,7 @@ use yii\bootstrap\Html;
 
 <?php TabWidget::begin(['heading' => Yii::t('wavecms_form/main', 'User email')]); ?>
 
-<?php echo $form->field($model, 'user_send_email')->widget(SwitchBox::class, [
+<?= $form->field($model, 'user_send_email')->widget(SwitchBox::class, [
     'options' => [
         'label' => false
     ],
@@ -78,20 +82,20 @@ use yii\bootstrap\Html;
 
 <div class="row">
     <div class="col-md-6">
-        <?php echo $form->field($model, 'user_from_email'); ?>
+        <?= $form->field($model, 'user_from_email'); ?>
     </div>
     <div class="col-md-6">
-        <?php echo $form->field($model, 'user_from_name'); ?>
+        <?= $form->field($model, 'user_from_name'); ?>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-9">
-        <?php echo $form->field($model, 'user_subject'); ?>
-        <?php echo $form->field($model, 'user_text')->widget(CKEditorWidget::class) ?>
+        <?= $form->field($model, 'user_subject'); ?>
+        <?= $form->field($model, 'user_text')->widget(CKEditorWidget::class) ?>
     </div>
     <div class="col-md-3">
-        <b><?php echo Yii::t('wavecms_form/main', 'Tags'); ?>:</b>
+        <b><?= Yii::t('wavecms_form/main', 'Tags'); ?>:</b>
         <hr />
         <table class="table table-bordered table-striped">
             <?php
@@ -99,8 +103,8 @@ use yii\bootstrap\Html;
             ?>
             <?php foreach ($formModel->attributes as $key => $attribute): ?>
                 <tr>
-                    <th><?php echo $formModel->getAttributeLabel($key); ?></th>
-                    <td>{<?php echo $key; ?>}</td>
+                    <th><?= $formModel->getAttributeLabel($key); ?></th>
+                    <td>{<?= $key; ?>}</td>
                 </tr>
             <?php endforeach; ?>
         </table>
@@ -112,7 +116,7 @@ use yii\bootstrap\Html;
 
 <?php TabWidget::begin(['heading' => Yii::t('wavecms_form/main', 'Thanks text')]); ?>
 
-<?php echo $form->field($model, 'thanks_text')->widget(CKEditorWidget::class) ?>
+<?= $form->field($model, 'thanks_text')->widget(CKEditorWidget::class) ?>
 
 <?php TabWidget::end(); ?>
 

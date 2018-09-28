@@ -2,6 +2,7 @@
 
 namespace mrstroz\wavecms\form\models;
 
+use himiklab\yii2\recaptcha\ReCaptchaValidator;
 use mrstroz\wavecms\form\models\query\FormQuery;
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -18,11 +19,29 @@ use yii\behaviors\TimestampBehavior;
  * @property string $phone
  * @property string $subject
  * @property string $text
+ * @property boolean $reCaptcha
+ * @property boolean $agree_1
+ * @property boolean $agree_2
  * @property integer $created_at
  * @property integer $updated_at
  */
 class Form extends \yii\db\ActiveRecord
 {
+
+    public $reCaptcha;
+
+    const SCENARIO_WEB = 'web';
+
+    public static $emailAttributes = [
+        'name',
+        'company',
+        'email',
+        'phone',
+        'subject',
+        'agree_1',
+        'agree_2'
+    ];
+
     /**
      * @inheritdoc
      */
@@ -56,6 +75,17 @@ class Form extends \yii\db\ActiveRecord
             [['email'], 'required'],
             [['email'], 'email'],
             [['type', 'name', 'company', 'email', 'phone', 'subject'], 'string', 'max' => 255],
+            [['reCaptcha'], ReCaptchaValidator::class,
+                'uncheckedMessage' => Yii::t('wavecms_form/main', 'Check reCaptcha field'),
+                'message' => Yii::t('wavecms_form/main', 'Check reCaptcha field'),
+                'on' => self::SCENARIO_WEB
+            ],
+            [['agree_1', 'agree_2'], 'integer'],
+            [['agree_1'], 'required',
+                'requiredValue' => 1,
+                'message' => Yii::t('wavecms_form/main', 'Please accept terms and conditions'),
+                'on' => self::SCENARIO_WEB
+            ]
         ];
     }
 
@@ -74,6 +104,9 @@ class Form extends \yii\db\ActiveRecord
             'phone' => Yii::t('wavecms_form/main', 'Phone'),
             'subject' => Yii::t('wavecms_form/main', 'Subject'),
             'text' => Yii::t('wavecms_form/main', 'Text'),
+            'reCaptcha' => Yii::t('wavecms_form/main', 'reCaptcha'),
+            'agree_1' => Yii::t('wavecms_form/main', 'Agree - Terms and conditions'),
+            'agree_2' => Yii::t('wavecms_form/main', 'Agree - Marketing'),
             'created_at' => Yii::t('wavecms_form/main', 'Created At')
         ];
     }
