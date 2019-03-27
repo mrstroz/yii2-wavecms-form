@@ -128,7 +128,7 @@ class Bootstrap implements BootstrapInterface
             'options' => [
                 'class' => 'drop-down'
             ],
-            'permission' => 'page',
+            'permission' => 'wavecms-form',
             'position' => 5000,
             'items' => [
                 [
